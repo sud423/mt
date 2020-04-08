@@ -1,0 +1,96 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "我爱水果-"+(Model.CategoryId==44?"上传视频":"上传图片");
+
+}
+
+@model Resource
+
+<div class="container" style="margin-bottom:100px;background:#fff; padding:20px;">
+    <div class="row">
+        <partial name="_Nav" />
+
+        <div class="col-sm-8 col-sm-offset-1">
+            <ol class="breadcrumb">
+                <li><a asp-action="index">我的</a></li>
+                <li class="active">@(Model.CategoryId==44?"上传视频":"上传图片")</li>
+            </ol>
+            @*<h4>请填写用户信息</h4>*@
+            <form asp-action="commit" method="post">
+                <div class="form-group">
+                    <input asp-for="Id" type="hidden" autocomplete="off" class="form-control" value="@(Model.Id)" />
+                    <input asp-for="CategoryId" type="hidden" autocomplete="off" class="form-control" value="@(Model.CategoryId)" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label">标题</label>
+                    <input asp-for="Title" required autocomplete="off" maxlength="100" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="Src">地址</label>
+                    <div class="input-group upload">
+                        <input asp-for="Src" class="form-control" required autocomplete="off" readonly />
+                        <div class="input-group-addon" style="padding:4.5px 12px;">
+                            <input type="button" id="uploadButton" value="选择文件" />
+                        </div>
+                    </div>
+                    <span asp-validation-for="Src" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Descript" class="control-label">描述</label>
+                    <textarea asp-for="Descript" autocomplete="off" rows="3" maxlength="500" class="form-control"></textarea>
+                    <span asp-validation-for="Descript" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="上  传" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+        
+</div>
+
+
+@*@section Styles{
+
+        <link href="~/lib/kindeditor/themes/default/default.css" rel="stylesheet" />
+    }*@
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <partial name="_KindeditorScriptsPartial" />
+
+    <script>
+    KindEditor.ready(function (K) {
+        var uploadbutton = K.uploadbutton({
+            button: K('#uploadButton')[0],
+            fieldName: 'file',
+            url: "@Url.Action("Upload","Oss",new { dir=(Model.CategoryId==44?"media":"image")})",
+            afterUpload: function (data) {
+
+                if (data.error === 0) {
+                    var url = K.formatUrl(data.url, 'absolute');
+                    K('#Src').val(url);
+                } else {
+                    alert(data.message);
+                }
+            },
+            afterError: function (str) {
+                alert('自定义错误信息: ' + str);
+            }
+        });
+        uploadbutton.fileBox.change(function (e) {
+            if (e.srcElement.files[0].size > 1*1024*1024 && @(Model.CategoryId)!=44) {
+                alert("文件不能超过1M")
+                return;
+            }
+            if (e.srcElement.files[0].size > 31457280 && @(Model.CategoryId)==44) {
+                alert("文件不能超过30M")
+                return;
+            }
+            uploadbutton.submit();
+        });
+    });
+    </script>
+}

@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "我的帖子，我爱8点，我爱上课";
+}
+
+@model PagedResult<Article>
+
+<ol class="breadcrumb" style="margin-bottom: 10px;">
+    <li><a asp-controller="home" asp-action="index">首页</a></li>
+    <li class="active">我爱8点</li>
+</ol>
+
+
+<div class="row" style="margin-bottom: 10px; margin-left: 10px;">
+    <a asp-controller="forum" asp-action="post" class="btn btn-info">发布</a>
+    <a asp-controller="forum" asp-action="list" class="btn btn-warning">只看我的</a>
+</div>
+<!--我的帖子列表-->
+<div class="list-group" id="forum_list_box" style="margin-bottom: 10px;">
+    @foreach (var item in Model.Data)
+    {
+        <a asp-controller="forum" asp-action="detail" asp-route-id="@item.Id" class="list-group-item">
+            <span class="badge">@item.Clicks</span>
+            @item.Title
+        </a>
+    }
+</div>
+
+<div class="row" id="load_more" style="margin-bottom: 10px;">
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous @(Model.CurrentPage==1?"hidden":"")">
+                    <a asp-controller="forum" asp-action="index" asp-route-page="@(Model.CurrentPage - 1)" id="Previous" aria-label="Previous">
+                        <span aria-hidden="true">&larr;</span>
+                        上一页
+                    </a>
+            </li>
+            <li class="next @(Model.TotalPage==0 || Model.CurrentPage== Model.TotalPage? "hidden" : "")">
+                <a asp-controller="forum" asp-action="index" asp-route-page="@(Model.CurrentPage + 1)" id="Next" aria-label="Next">下一页 <span aria-hidden="true">&rarr;</span></a>
+            </li>
+        </ul>
+    </nav>
+</div>

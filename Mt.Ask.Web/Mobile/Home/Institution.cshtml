@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = ViewBag.YuanXiao + "，我爱上课";
+}
+
+@model IEnumerable<Article>
+
+<partial name="_Nav" />
+
+<div class="row">
+    <div class="container">
+        <h2 class="col-lg-12 title">
+            <strong>@ViewBag.YuanXiao</strong>
+        </h2>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6">
+                    <div class="media">
+                        <div class="media-left">
+                            <span class="fa-stack" style="font-size: 1.5em;">
+                                <i class="fa fa-circle fa-stack-1x text-warning" style="font-size: 1.5em;"></i>
+                                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+                            </span>
+
+                        </div>
+                        <div class="media-body" style="vertical-align: middle;">
+                            <a href="/detail/@(item.Id)">
+                                <h4 class="media-heading">@item.Title</h4>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

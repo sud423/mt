@@ -1,0 +1,301 @@
+﻿@{
+    ViewData["Title"] = "我爱上课网，企业家，总裁培训，就选“我爱上课网”！";
+}
+
+
+@using System.Linq
+@model Tuple<IEnumerable<Course>, IEnumerable<Course>, IEnumerable<Article>, IEnumerable<Article>>
+
+<div class="carousel">
+    <h1>我爱上课，遇见更美好的的自己</h1>
+    <p>I LOVE CLASS,MEET A BEETER LIFE.</p>
+</div>
+
+<partial name="_Nav" />
+
+<div class="row region">
+    <div class="container">
+        <a name="qiyejieshao" class="dark"></a>
+        <h2 class="col-lg-12 title">
+            <strong>企业介绍</strong>
+        </h2>
+        <div class="row">
+            <video controls="controls" autoplay="autoplay" class="img-responsive"
+                   controlslist="nodownload">
+                <source src="~/video/propaganda.mp4"
+                        type="video/mp4" />
+            </video>
+        </div>
+        <p style="text-indent: 2em;margin-top:10px;font-size:9px;">
+            【我爱上课】知名注册品牌是从事国内与国际并举、专业与实践并进的学历后高端教育服务平台，平台“一站式高端人才培养，铸就优质教育平台”为服务宗旨，
+            引进海内外高端教育资源，汇集北大、清华、人大、交大、复旦和中大等国内一流高校优秀师资和精品课程资源，依托知名高校优良办学传统和优势，
+            始终坚持将科研和实业相结合，充分发挥用教育服务地方带动经济发展的社会基本功能，积极构建“人本至上”的服务运行机制，提供系统的组织战略规划、
+            人才培养和资源开发、终身学习体系建设等综合性教育咨询和服务。
+        </p>
+    </div>
+</div>
+<div class="row region" style="background-color: #f2f2f2;">
+    <div class="container">
+        <a name="gongkaike" class="dark"></a>
+        <h2 class="col-lg-12 title">
+            <strong>公开课</strong>
+        </h2>
+        <div class="col-lg-12 text-center"
+             style="padding: 0px; margin-bottom: 10px;">
+            <img style="width: 100%;" alt="公开课介绍" class="img-responsive"
+                 src="~/images/gkk-bg.png" />
+        </div>
+        <div class="col-xs-6 mb-25 text-right"
+             style="padding: 0px 5px 0px 0px;">
+            <img class="img-responsive"
+                 src="~/images/gkk-1.jpg" alt="">
+        </div>
+        <div class="col-xs-6 mb-25 text-center"
+             style="padding: 0px 0px 0px 5px;">
+            <img class="img-responsive"
+                 src="~/images/gkk-2.jpg" alt="">
+        </div>
+        <div class="col-xs-6 text-right" style="padding: 0px 5px 0px 0px;">
+            <img class="img-responsive"
+                 src="~/images/gkk-4.jpg" alt="">
+        </div>
+        <div class="col-xs-6 mb-25 text-left"
+             style="padding: 0px 0px 0px 5px;">
+            <a href="/jingcai">
+                <img class="img-responsive"
+                     src="~/images/gkk-3.jpg" alt="">
+            </a>
+        </div>
+        <div class="col-xs-12 text-left"
+             style="padding: 0px; font-size: 10px;">
+            <p style="color: #541a1f;margin-bottom:6px;">
+                <a href="/detail/59">《环球CEO高层智慧研修班》</a>公开课火热进行中！<a href="/download?fileName=【我爱上课】环球CEO高层智慧研修班报名表.docx">点击报名……</a>
+            </p>
+
+            <p style="color: #541a1f;">
+                <a href="/detail/60">《心理学与幸福企业高层智慧研修班》</a>公开课火热进行中！<a href="javascript:void(0)">点击报名……</a>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="row region kechengyudingzhi">
+    <div class="container">
+        <a name="kechengyudingzhi" class="dark"></a>
+        <h2 class="col-lg-12 title">
+            <strong>课程与定制</strong>
+        </h2>
+        <table class="table">
+            <tr>
+                <td><a href="/kc/zongheguanli">综合管理</a></td>
+                <td><a href="/kc/gongsizhili">公司治理</a></td>
+                <td><a href="/kc/shichangyingxiao">市场营销</a></td>
+                <td style="padding: 8px 0px;"><a href="/kc/jinrongyucaiwu">金融与财务</a></td>
+                <td><a href="/kc/hulianwang">互联网+</a></td>
+            </tr>
+            <tr>
+                <td><a href="/kc/chuangyechuangxin">创业创新</a></td>
+                <td><a href="/kc/yishurenwen">艺术人文</a></td>
+                <td><a href="/kc/youxue">游学</a></td>
+                <td><a href="/kc/qiyeneixun">企业内训</a></td>
+                <td><a href="/dingzhi">特色定制</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="row region yuanxiao">
+    <div class="container">
+        <a name="yuanxiao" class="dark"></a>
+        <h2 class="col-lg-12 title">
+            <strong>院校</strong>
+        </h2>
+        <table class="table">
+            <tr>
+                <td>
+                    <a href="/yx/beijingdaxue">
+                        <div class="img_box">
+                            <img class="img-responsive"
+                                 src="~/images/bj.png" alt="北京大学" />
+                        </div>
+                        <p>北京大学</p>
+                    </a>
+                </td>
+                <td>
+                    <a href="/yx/qinghuadaxue">
+                        <div class="img_box">
+                            <img class="img-responsive"
+                                 src="~/images/qh.png" alt="清华大学" />
+                        </div>
+                        <p>清华大学</p>
+                    </a>
+                </td>
+                <td>
+                    <a href="/yx/zgrenmindaxue">
+                        <div class="img_box">
+                            <img class="img-responsive"
+                                 src="~/images/rm.png"
+                                 alt="中国人民大学" />
+                        </div>
+                        <p>中国人民大学</p>
+                    </a>
+                </td>
+                <td>
+                    <a href="/yx/fudandaxue">
+                        <div class="img_box">
+                            <img class="img-responsive"
+                                 src="~/images/fd.png" alt="复旦大学" />
+                        </div>
+                        <p>复旦大学</p>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/yx/shjiaotongdaxue">
+                        <div class="img_box">
+                            <img class="img-responsive"
+                                 src="~/images/jt.png"
+                                 alt="上海交通大学" />
+                        </div>
+                        <p>上海交通大学</p>
+                    </a>
+                </td>
+                <td>
+                    <a href="/yx/tongjidaxue">
+                        <div class="img_box">
+                            <img class="img-responsive"
+                                 src="~/images/tj.png" alt="同济大学" />
+                        </div>
+                        <p>同济大学</p>
+                    </a>
+                </td>
+                <td>
+                    <a href="/yx/zhongshandaxue">
+                        <div class="img_box">
+                            <img class="img-responsive"
+                                 src="~/images/zs.png" alt="中山大学" />
+                        </div>
+                        <p>中山大学</p>
+                    </a>
+                </td>
+                <td>
+                    <a href="/yx/woaishangke">
+                        <div class="img_box">
+                            <img class="img-responsive"
+                                 src="~/images/5ask.png"
+                                 alt="我爱上课" />
+                        </div>
+                        <p>公开课</p>
+                    </a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+<div class="row region zhuanjiayuxiaoyou">
+    <a name="zhuanjiayuxiaoyou" class="dark"></a>
+    <h2 class="col-lg-12 title">
+        <strong>专家与校友</strong>
+    </h2>
+    <img class="img-responsive" alt="专家" src="~/images/zjxy1.jpg">
+    <img style="margin-top:10px;" class="img-responsive" alt="专家" src="~/images/zjxy2.jpg">
+    <p class="text-right" style="margin-top:10px;">
+        <a class="more" href="/zjxy">查看更多</a>
+    </p>
+</div>
+<div class="row region">
+    <div class="container">
+        <a name="xianshangxuexi" class="dark"></a>
+        <h2 class="col-lg-12 title">
+            <strong>线上学习</strong>
+        </h2>
+        <div class="col-lg-4 mb-4 text-center" style="padding:0px;">
+            <a href="https://app550xdol84622.h5.xiaoeknow.com" class="online"></a>
+        </div>
+        <p class="text-right">
+            <a href="https://app550xdol84622.h5.xiaoeknow.com" class="more">查看更多</a>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="container">
+        <a name="qita" class="dark"></a>
+        <h2 class="col-lg-12 title">
+            <strong>其它</strong>
+        </h2>
+        <div class="col-lg-3 qt">
+            <h4>近期开课</h4>
+            <dl>
+                <dt>
+                    <a href="/detail/@(Model.Item2.FirstOrDefault().Id)"
+                       title="【我爱上课】@(Model.Item2.FirstOrDefault().Name)">【我爱上课】@(Model.Item2.FirstOrDefault().Name)</a>
+                    <span>@(DateTime.Now.ToString("yyyy/MM/dd"))</span>
+                </dt>
+                <dt>
+                    <a href="/detail/@(Model.Item2.LastOrDefault().Id)"
+                       title="【我爱上课】@(Model.Item2.LastOrDefault().Name)">【我爱上课】@(Model.Item2.LastOrDefault().Name)</a>
+                    <span>@(DateTime.Now.ToString("yyyy/MM/dd"))</span>
+                </dt>
+                <dt>
+                    <a href="/detail/@(Model.Item1.FirstOrDefault().Id)"
+                       title="@(Model.Item1.FirstOrDefault().Name)">@(Model.Item1.FirstOrDefault().Name)</a>
+                    <span>@(Model.Item1.FirstOrDefault().OpenDate.ToString("yyyy/MM/dd"))</span>
+                </dt>
+                <dt>
+                    <span><a href="/qt/jinqikaike">更多……</a></span>
+                </dt>
+            </dl>
+        </div>
+        <div class="col-lg-3 qt">
+            <h4>活动预告</h4>
+            <dl>
+                @{
+                    int i = 0;
+                    foreach (var item in Model.Item3)
+                    {
+                        if (i < 3)
+                        {
+                            <dt>
+                                <a href="/announce/@(item.Id)"
+                                    title="@(item.Title)">@(item.Title)</a>
+                                <span>@(item.CreatedAt.ToString("yyyy/MM/dd"))</span>
+                            </dt>
+                            i++;
+                        }
+                        else
+                            break;
+                    }
+                }
+                <dt>
+                    <span><a href="/qt/huodongyugao">更多……</a></span>
+                </dt>
+            </dl>
+        </div>
+        <div class="col-lg-3 qt">
+            <h4>焦点文章</h4>
+            <dl>
+                @{
+                    int j = 0;
+                    foreach (var item in Model.Item4)
+                    {
+                        if (j < 3)
+                        {
+                            <dt>
+                                <a href="/news/@(item.Id)"
+                                   title="@(item.Title)">@(item.Title)</a>
+                                <span>@(item.CreatedAt.ToString("yyyy/MM/dd"))</span>
+                            </dt>
+
+                            j++;
+                        }
+                        else
+                            break;
+                    }
+                }
+                <dt>
+                    <span><a href="/qt/jiaodianwenzhang">更多……</a></span>
+                </dt>
+            </dl>
+        </div>
+    </div>
+</div>

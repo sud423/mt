@@ -1,0 +1,104 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "我爱水果-发布趣闻杂谈";
+}
+
+@model Article
+
+<div class="container" style="margin-bottom:100px;background:#fff;padding:20px;">
+    <div class="row">
+        <partial name="_Nav" />
+
+        <div class="col-sm-8 col-sm-offset-1">
+            <ol class="breadcrumb">
+                <li><a asp-action="index">我的</a></li>
+                <li class="active">发布趣闻杂谈</li>
+            </ol>
+            @*<h4>请填写用户信息</h4>*@
+            <form id="from1" asp-action="save" method="post">
+                <div class="form-group">
+                    <input asp-for="CategoryId" type="hidden" autocomplete="off" class="form-control" value="@(Model.CategoryId)" />
+                    <input asp-for="Id" type="hidden" autocomplete="off" class="form-control" value="@(Model.Id)" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label">主题</label>
+                    <input asp-for="Title" required autocomplete="off" maxlength="100" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Lead" class="control-label">导语</label>
+                    <textarea asp-for="Lead" autocomplete="off" rows="3" maxlength="255" class="form-control"></textarea>
+                    <span asp-validation-for="Lead" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="Cover">封面</label>
+                    <div class="input-group">
+                        <input asp-for="Cover" class="form-control" required autocomplete="off" readonly />
+                        <div class="input-group-addon" style="padding:4.5px 12px;">
+                            <input type="button" id="uploadButton" value="选择文件" />
+                        </div>
+                    </div>
+                    <span asp-validation-for="Cover" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Content" class="control-label">内容</label>
+                    <textarea id="editor_id" asp-for="Content" autocomplete="off" rows="15" required class="form-control"></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="发 布" class="btn btn-primary" />
+                    <input type="button" id="btn_preview" value="保存预览" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+        
+
+@*@section Styles{
+
+        <link href="~/lib/kindeditor/themes/default/default.css" rel="stylesheet" />
+    }*@
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <partial name="_KindeditorScriptsPartial" />
+
+<script>
+    KindEditor.ready(function (K) {
+        window.editor = K.create('#editor_id', {
+            uploadJson: "@Url.Action("Upload","Oss")",
+            pasteType: 1,
+            filePostName:"file",
+            //allowImageRemote:false
+        });
+
+        var uploadbutton = K.uploadbutton({
+            button: K('#uploadButton')[0],
+            fieldName: 'file',
+            url: "@Url.Action("Upload","Oss",new { dir="image"})",
+            afterUpload: function (data) {
+                if (data.error === 0) {
+                    var url = K.formatUrl(data.url, 'absolute');
+                    K('#Cover').val(url);
+                } else {
+                    alert(data.message);
+                }
+            },
+            afterError: function (str) {
+                alert('自定义错误信息: ' + str);
+            }
+        });
+        uploadbutton.fileBox.change(function (e) {
+            if (e.srcElement.files[0].size > 1048576) {
+                alert("文件不能超过1M")
+                return;
+            }
+            uploadbutton.submit();
+        });
+    });
+</script>
+}

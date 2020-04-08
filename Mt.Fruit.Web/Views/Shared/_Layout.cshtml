@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome =1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12 logo">
+                        <img src="~/images/logo.png" alt="logo" />
+                    </div>
+                    <div class="col-md-8 col-xs-12">
+                        <div class="row">
+                            <div class="col-md-12 text-right" style="padding-top: 6px;padding-right: 15px;">
+                                <span>全国统一咨询热线：<strong>021-80198325</strong></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <ul class="nav navbar-nav pull-right">
+                                <li><a href="/">首页</a></li>
+                                <li><a href="/group">兴趣小组</a></li>
+                                <li><a href="/video">水果视频</a></li>
+                                <li><a href="/interesting">趣闻杂谈</a></li>
+                                @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                                {
+                                    <li><a href="/my">欢迎@(ViewContext.HttpContext.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value)</a></li>
+                                    <li><a asp-action="logout" asp-controller="account" asp-route-returnUrl="@(ViewContext.HttpContext.Request.Path)" style="padding-left:0;">退出</a></li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a asp-action="index" asp-controller="account" asp-route-returnUrl="@(ViewContext.HttpContext.Request.Path)"
+                                           style="display: inline-block; padding-right: 5px;">登录</a>|<a asp-action="reg" asp-controller="account" asp-route-returnUrl="@(ViewContext.HttpContext.Request.Path)" style="display: inline-block; padding-left: 5px;">注册</a>
+                                    </li>
+                                }
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody()
+
+    <footer>
+        <div class="container text-center" style="height: 556px;">
+
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="~/images/qr_code.png" alt="官方微博" />
+                    </div>
+                    <div class="panel-footer">
+                        官方微博
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="~/images/qr_code.png" alt="官方微信" />
+                    </div>
+                    <div class="panel-footer">
+                        官方微信
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="~/images/qr_code.png" alt="官方抖音" />
+                    </div>
+                    <div class="panel-footer">
+                        官方抖音
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="~/images/qr_code.png" alt="官方快手" />
+                    </div>
+                    <div class="panel-footer">
+                        官方快手
+                    </div>
+                </div>
+            </div>
+
+            <p>Copyright &copy; 敏太文化 2015 沪ICP备15053877</p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

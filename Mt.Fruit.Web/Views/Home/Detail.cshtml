@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "我爱果庄，" + Model.Title;
+}
+@model Article
+
+<div class="container" style="margin-bottom:130px;border:1px solid #f6f0f0;background:#fff;margin-top:50px;padding:0 50px 50px;">
+    <h3 class="text-center" style="font-weight:bold;font-size:36px;">@Model.Title<small style="margin-left:10px;font-size:14px;">@(Model.Likes)赞/@(Model.Replys)回复</small></h3>
+    <hr style="border-style:dashed;border-color:#000000;" />
+    @if(!string.IsNullOrEmpty(Model.Lead))
+    {
+        <p>导语：@Html.Raw(Model.Lead)</p>
+    }
+    @Html.Raw(Model.Content)
+</div>
+
+@section Scripts{ 
+    <style type="text/css">
+        p{
+            text-indent:25px
+        }
+    </style>
+}

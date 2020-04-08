@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "发布帖子，我爱8点，我爱上课";
+}
+@model Article
+<ol class="breadcrumb">
+    <li><a asp-controller="home" asp-action="index">首页</a></li>
+    <li><a asp-controller="forum" asp-action="index">我爱8点</a></li>
+    <li class="active">发布贴子</li>
+</ol>
+
+<div class="container" style="margin-bottom: 20px;">
+    @*<div id="warnTip" class="alert alert-warning" style="display: none;">
+            <strong>警告！</strong><span id="msg"></span>。
+        </div>
+        <div id="succTip" class="alert alert-success" style="display: none;">
+            <strong>发布成功，正在跳转……</strong>
+        </div>*@
+    <form id="formForum" asp-action="save" asp-route-id="@ViewBag.Id" method="post">
+        <div class="form-group">
+            <label asp-for="Title">标题</label>
+            <input type="text" class="form-control" asp-for="Title" placeholder="必填" maxlength="100">
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Content">描述</label>
+            <textarea rows="5" class="form-control" asp-for="Content" placeholder="非必填" maxlength="3000"></textarea>
+        </div>
+        @*<input type="hidden" asp-for="Status" value="1">
+        <input type="hidden" asp-for="Id" value="0" />*@
+        <!--<button type="submit" class="btn btn-default">保存并发布</button>-->
+        <button type="submit" class="btn btn-default">保存</button>
+        <a asp-controller="forum" asp-action="list" class="btn btn-link">返回</a>
+    </form>
+</div>
+
+
+@section Scripts{ 
+    <partial name="_ValidationScriptsPartial" />
+}

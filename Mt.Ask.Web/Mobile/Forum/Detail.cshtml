@@ -1,0 +1,192 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "我爱8点详情，我爱上课";
+
+    WxConfig config = ViewBag.WxConfig as WxConfig;
+
+    string content = Model.Content?.Replace("\n", "").Replace(" ", "").Replace("\t", "").Replace("\r", "");
+
+}
+
+@model Article
+@using System.Security.Claims
+@using Csp.Web.Extensions
+
+<ol class="breadcrumb" style="margin-bottom: 0px;">
+    <li><a asp-controller="home" asp-action="index">首页</a></li>
+    <li><a asp-controller="forum" asp-action="index">我爱8点</a></li>
+    <li class="active" rel="@(ViewContext.HttpContext.Request.GetCurrentUrl())">8点详情</li>
+</ol>
+
+<div class="container">
+    <h4>
+        <strong title="@(Model.Title)">@Model.Title</strong>
+    </h4>
+    <div class="row">
+
+        <div class="col-xs-6" style="padding:0px;">
+            <small>@(Model.CreatedAt.ToString("yyyy-MM-dd HH:mm"))  阅读  @(Model.Clicks)</small>
+        </div>
+        <div class="col-xs-6 text-right" style="padding:0px;">
+            @if (Model.UserId == int.Parse(ViewContext.HttpContext.User.FindFirstValue(ClaimTypes.Sid)))
+            {
+                <small>
+                    <a asp-action="post" asp-route-id="@Model.Id">编辑</a>
+                    &nbsp;
+                    <a onclick="del(@Model.Id)">删除</a>
+                </small>
+            }
+        </div>
+    </div>
+</div>
+<hr style="margin-bottom: 7px; margin-top: 7px;">
+<div class="container">
+    <div style="margin-bottom: 7px;">
+        <img style="width: 36px;" src="@(string.IsNullOrEmpty(Model.User.HeadImgUrl)?"~/images/r_logo.png":Model.User.HeadImgUrl)" alt="用户头像" class="img-circle">
+        <span id="lbluser" rel="@(Model.User.ExternalLogin.OpenId)">@Html.Raw(string.IsNullOrEmpty(Model.User.NickName)?"我爱上课会员":Model.User.NickName)</span>
+    </div>
+    <p>
+        @Html.Raw(Model.Content)
+    </p>
+</div>
+
+<div style="background-color: #f3f3f3;">
+    <blockquote style="margin-bottom: 10px; padding: 5px 10px; color: #541a1f; font-size: 14px;border-left-color: #541a1f; ">
+        <p>全部回复</p>
+    </blockquote>
+
+    <div id="J_reply_container">
+
+    </div>
+
+    <div id="J-page" class="m-page m-row" style="width: auto;">
+        <a id="btnFirst" class="disabled">首页</a>
+        <a id="btnPrevious" class="disabled">上页</a>
+        <div class="pager_btn"><span class="page_num">1/1</span></div>
+        <a id="btnNext" class="disabled">下页</a>
+        <a id="btnLast" class="disabled">末页</a>
+    </div>
+
+    <div class="container" style="padding: 0px 10px 20px;margin-top:20px;">
+        <input type="hidden" id="txtId" value="0" />
+        <input type="hidden" id="txtUserId" value="@(Model.UserId)" />
+        <input type="hidden" id="txtLoginId" value="@(ViewContext.HttpContext.User.FindFirstValue(ClaimTypes.Sid))" />
+        <input type="hidden" id="txtForumId" value="@(Model.Id)" />
+
+        <div class="form-group">
+            <textarea id="content" rows="5" class="form-control" maxlength="500"></textarea>
+
+        </div>
+        <button class="btn btn-default" type="button" id="btnComment">提交评论</button>
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    
+    <script type="text/javascript">
+        var url='@Html.Raw($"{ViewContext.HttpContext.Request.Scheme}://{ViewContext.HttpContext.Request.Host.Value}{ViewContext.HttpContext.Request.Path.Value}{ViewContext.HttpContext.Request.QueryString.Value}")';
+        wx.config({
+            //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '@(config?.AppId)', // 必填，公众号的唯一标识
+            timestamp: @(config?.Timestamp??0), // 必填，生成签名的时间戳
+            nonceStr: '@(config?.NonceStr)', // 必填，生成签名的随机串
+            signature: '@(config?.Signature)',// 必填，签名
+            jsApiList: [ "updateAppMessageShareData", "updateTimelineShareData", "onMenuShareTimeline", "onMenuShareAppMessage", "showMenuItems", "hideAllNonBaseMenuItem" ] // 必填，需要使用的JS接口列表
+        });
+        wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
+            wx.hideAllNonBaseMenuItem({
+                success: function () {
+                    //alert('已隐藏所有非基本菜单项');
+                }
+            });
+            wx.showMenuItems({
+                menuList: [
+                    //'menuItem:readMode', // 阅读模式
+                    'menuItem:share:appMessage', // 分享到朋友圈
+                    'menuItem:share:timeline' // 分享到朋友圈
+                    //'menuItem:copyUrl' // 复制链接
+                ],
+                success: function (res) {
+                    //alert('已显示“阅读模式”，“分享到朋友圈”，“复制链接”等按钮');
+                },
+                fail: function (res) {
+                    //alert(JSON.stringify(res));
+                }
+            });
+
+            if (isMobile.iOS) {
+                wx.updateTimelineShareData({
+                    desc: '@Html.Raw(content)', // 分享描述
+                    title: '我爱8点，@Html.Raw(Model.Title)', // 分享标题
+                    link: 'http://www.5-ask.com/forum/detail/@(Model.Id)', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: 'http://www.5-ask.com/images/r_logo.png', // 分享图标
+                    type: 'link' // 分享类型,music、video或link，不填默认为link
+                });
+
+                wx.updateAppMessageShareData({
+                    desc: '@Html.Raw(content)', // 分享描述
+                    title: '我爱8点，@Html.Raw(Model.Title)', // 分享标题
+                    link: 'http://www.5-ask.com/forum/detail/@(Model.Id)', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: 'http://www.5-ask.com/images/r_logo.png', // 分享图标
+                    type: 'link', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                        //$.showToast("分享成功")
+                        //$.alert({msg:'分享成功'});
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                        //$.showToast("取消分享")
+                        //$.alert({msg:'取消分享'});
+                    },
+                    fail: function (res) {
+                        //$.alert({msg:'分享失败'});
+                        //$.showToast("分享失败")
+                    }
+                });
+            } else {
+                wx.onMenuShareTimeline({
+                    desc: '@Html.Raw(content)', // 分享描述
+                    title: '我爱8点，@Html.Raw(Model.Title)', // 分享标题
+                    link: 'http://www.5-ask.com/forum/detail/@(Model.Id)', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: 'http://www.5-ask.com/images/r_logo.png', // 分享图标
+                    type: 'link' // 分享类型,music、video或link，不填默认为link
+                });
+
+                wx.onMenuShareAppMessage({
+                    desc: '@Html.Raw(content)', // 分享描述
+                    title: '我爱8点，@Html.Raw(Model.Title)', // 分享标题
+                    link: 'http://www.5-ask.com/forum/detail/@(Model.Id)', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: 'http://www.5-ask.com/images/r_logo.png', // 分享图标
+                    type: 'link', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                        //$.showToast("分享成功")
+                        //$.alert({msg:'分享成功'});
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                        //$.showToast("取消分享")
+                        //$.alert({msg:'取消分享'});
+                    },
+                    fail: function (res) {
+                        //$.alert({msg:'分享失败'});
+                        //$.showToast("分享失败")
+                    }
+                });
+            }
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        getReplyList();
+    </script>
+}

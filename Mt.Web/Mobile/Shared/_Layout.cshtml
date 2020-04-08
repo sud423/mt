@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome =1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>@ViewData["Title"] - 上海敏太文化传播有限公司</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/mobile.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 col-xs-8 logo">
+                        <img src="~/images/mt-logo.png"
+                             alt="logo" />
+                    </div>
+                    <div class="col-md-8 col-xs-4 text-center"
+                         style="position: relative; height: 55px;">
+                        <div class="user_box">
+                            <img style="height: 29px;"
+                                 src="~/images/mt-user.png"
+                                 alt="reg_login" /><a href="#" style="display: inline-block; ">登录/注册</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody()
+
+    <footer class="border-top footer">
+        <div class="container">
+            <div class="row" style="margin: 10px 0px 0px;">
+                <div class="col-lg-12 text-center" style="padding:0px;">
+                    <h4>请与我们联系</h4>
+                    <p style="font-size:5px;margin:4px 0px;">如果您或者您的企业要投资基础教育事业！给我们一个电话或邮件，我们会尽快满足您的要求！</p>
+                </div>
+            </div>
+
+            <div class="row" style="margin:8px 0px 0px;">
+                <div class="col-xs-6"
+                     style="padding: 0px;">
+                    <h4 style="font-size:13px;">招生咨询</h4>
+                    <div style="margin:8px 0px 0px;border-right: 1px solid #fff;">
+                        <i class="fa fa-phone fa-2x wow bounceIn pull-left"></i>
+                        <div>
+                            <span style="font-size: 9px; display: block">全国统一招生及课程咨询热线</span>
+                            <span style="font-size: 12px;letter-spacing:2px; display: block">021-80198325</span>
+                        </div>
+                    </div>
+                    <p class="clearfix text-left" style="margin-top:-3px;border-right: 1px solid #fff;">
+                        <span style="font-size: 12px;letter-spacing:1.4px;">
+                            <a href="mailto:kevin@5-ask.com">kevin@5-ask.com</a>
+                        </span>
+                    </p>
+                </div>
+                <div class="col-xs-6" style="padding: 0px;">
+                    <h4 style="font-size:13px;">资料下载</h4>
+                    <p style="font-size: 9px;margin:8px 0px;">
+                        <a href="">【华师启航】夏令营报名表</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-xs-4">
+                    <div class="qrcode">
+                        <img class="img-responsive"
+                             src="~/images/wx_qr.jpg"
+                             alt="wxqrcode" />
+                    </div>
+                    <p style="margin:5px 0px 10px;font-size:9px;">官方微信公众号</p>
+                </div>
+                <div class="col-xs-4">
+                    <div class="qrcode">
+                        <img class="img-responsive"
+                             src="~/images/wb_qr.jpg"
+                             alt="wbqrcode" />
+                    </div>
+                    <p style="margin:5px 0px 10px;font-size:9px;">官方新浪微博号</p>
+                </div>
+                <div class="col-xs-4">
+                    <div class="qrcode">
+                        <img class="img-responsive" src="~/images/dy_qr.jpg" alt="dyqrcode" />
+                    </div>
+                    <p style="margin:5px 0px 10px;font-size:9px;">官方抖音号</p>
+                </div>
+            </div>
+
+            <div class="row text-center" style="font-size:8px;">
+                <p>Copyright &copy; 敏太文化 2015 沪ICP备15053877</p>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,120 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "我爱果庄，兴趣小组";
+}
+@model Category
+
+<partial name="_Nav" />
+<div class="container">
+
+    <div class="group">
+        <div class="panel panel-default">
+            <div class="panel-body text-center">
+                <img src="@(Model.BigPic)" alt="@(Model.Name)" />
+            </div>
+            <div class="panel-footer">
+                <h2>@Model.Name</h2>
+
+                <p>
+                    <span style="margin-right:20px;"><i class="love"></i>@(Model.Fllows)人喜欢</span>
+                    <span style="margin-left:20px;"><i class="add"></i>关注@(Model.Name)小组</span>
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        @Html.Raw(Model.Descript)
+    </div>
+</div>
+
+<div class="header">
+    <span class="line"></span>
+    <span class="text">主题</span>
+    <span class="line"></span>
+</div>
+<div class="container" style="background:#fff;">
+    <dl class="dl-list">
+    </dl>
+    <nav class="text-right">
+        <!--text-right 右对齐，bootstrap中样式-->
+        <ul class="pagination" style="margin:10px 0px;"></ul>
+    </nav>
+</div>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+        It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <div class="pswp__container">
+            <!-- don't modify these 3 pswp__item elements, data is added later on -->
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="关闭 (Esc)"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="放大/缩小"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="上一张"></button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="下一张"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts{
+    <link href="~/lib/PhotoSwipe/photoswipe.css" rel="stylesheet" />
+    <link href="~/lib/PhotoSwipe/default-skin/default-skin.css" rel="stylesheet" />
+    <script src="~/lib/PhotoSwipe/photoswipe.min.js"></script>
+    <script src="~/lib/PhotoSwipe/photoswipe-ui-default.min.js"></script>
+    <script src="~/js/bootstrap-paginator.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        categoryId =@(ViewBag.CategoryId);
+        getArticles(1);
+        getResource(1, 5);
+    </script>
+}

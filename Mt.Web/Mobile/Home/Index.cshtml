@@ -1,0 +1,164 @@
+﻿@{
+    //ViewData["Title"] = "Home Page";
+}
+@using System.Collections.Generic
+
+@model IEnumerable<Article>
+
+
+<div class="carousel">
+    <img src="~/images/mt-carousel.jpg" class="img-responsive" />
+</div>
+
+<partial name="_Nav" />
+
+<div class="row region">
+    <div class="container">
+        <a name="qiyejieshao" class="dark"></a>
+        <h2 class="col-lg-12 title">
+            <strong>企业介绍</strong>
+        </h2>
+        <div class="row">
+            <video class="img-responsive" controls="controls" autoplay="autoplay" controlslist="nodownload">
+                <source src="~/video/propaganda.mp4" type="video/mp4" />
+            </video>
+        </div>
+        <p style="text-indent: 2em;margin-top:10px;font-size:9px;">上海敏太文化传播有限公司成立于2015年11月，隶属于敏太集团旗下子公司之一，主营基础教育合作办学的第三方专业考察论证以及文化艺术交流与策划、市场营销策划、企业形象策划等。也是华东师范大学基础教育集团唯一指定合作单位。公司以专注、专业、专心的发展理念，以基础教育合作办学考察论证等方式，快速推动全国基础教育事业的发展。发挥社会主义核心价值观对国民基础教育、传统文化传承等起到引领作用。目前已经与新城控股集团、旭辉集团、金茂集团、华熙集团等多家知名企业达成战略合作伙伴关系。</p>
+    </div>
+</div>
+
+<div class="row region">
+    <div class="container">
+        <a name="xinwenzixun" class="dark"></a>
+        <h2 class="col-lg-12 title">
+            <strong>新闻资讯</strong>
+        </h2>
+        <div class="row">
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <span class="pull-left">
+                            <a style="color: inherit;" href="/d/@item.Id">@item.Title</a>
+                        </span>
+                    </li>
+                }
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="container">
+        <a name="jingcaishunjian" class="dark"></a>
+        <h2 class="col-lg-12 title">
+            <strong>精彩瞬间</strong>
+        </h2>
+        <div class="col-xs-6 mb-25 text-right" style="padding: 0px 5px 0px 0px;">
+            <img class="img-responsive" onclick="openPhotoSwipe(this)" src="~/images/1.jpg" />
+        </div>
+        <div class="col-xs-6 mb-25 text-right" style="padding: 0px 0px 0px 5px;">
+            <img class="img-responsive" onclick="openPhotoSwipe(this)" src="~/images/2.jpg" />
+        </div>
+        <div class="col-xs-6 mb-25 text-right" style="padding: 0px 5px 0px 0px;">
+            <img class="img-responsive" onclick="openPhotoSwipe(this)" src="~/images/3.jpg" />
+        </div>
+        <div class="col-xs-6 mb-25 text-right" style="padding: 0px 0px 0px 5px;">
+            <img class="img-responsive" onclick="openPhotoSwipe(this)" src="~/images/4.jpg" />
+        </div>
+        <div class="col-xs-6 mb-25 text-right" style="padding: 0px 5px 0px 0px;">
+            <img class="img-responsive" onclick="openPhotoSwipe(this)" src="~/images/5.jpg" />
+        </div>
+        <div class="col-xs-6 mb-25 text-right" style="padding: 0px 0px 0px 5px;">
+            <img class="img-responsive" onclick="openPhotoSwipe(this)" src="~/images/6.jpg" />
+        </div>
+        <div class="col-xs-6 mb-25 text-right" style="padding: 0px 5px 0px 0px;">
+            <img class="img-responsive" onclick="openPhotoSwipe(this)" src="~/images/7.jpg" />
+        </div>
+        <div class="col-xs-6 mb-25 text-right" style="padding: 0px 0px 0px 5px;">
+            <img class="img-responsive" onclick="openPhotoSwipe(this)" src="~/images/8.jpg" />
+        </div>
+        <div class="col-xs-6 mb-25 text-right" style="padding: 0px 5px 0px 0px;">
+            <img class="img-responsive" onclick="openPhotoSwipe(this)" src="~/images/9.jpg" />
+        </div>
+        <div class="col-xs-6 mb-25 text-right" style="padding: 0px 0px 0px 5px;">
+            <img class="img-responsive" onclick="openPhotoSwipe(this)" src="~/images/10.jpg" />
+        </div>
+        <div class="col-xs-6 mb-25 text-right" style="padding: 0px 5px 0px 0px;">
+            <img class="img-responsive" onclick="openPhotoSwipe(this)" src="~/images/11.jpg" />
+        </div>
+        <div class="col-xs-6 mb-25 text-right" style="padding: 0px 0px 0px 5px;">
+            <img class="img-responsive" onclick="openPhotoSwipe(this)" src="~/images/12.jpg" />
+        </div>
+    </div>
+</div>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <div class="pswp__container">
+            <!-- don't modify these 3 pswp__item elements, data is added later on -->
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="关闭 (Esc)"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="放大/缩小"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="上一张"></button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="下一张"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+    <link href="~/lib/PhotoSwipe/photoswipe.css" rel="stylesheet" />
+    <link href="~/lib/PhotoSwipe/default-skin/default-skin.css" rel="stylesheet" />
+    <script src="~/lib/PhotoSwipe/photoswipe.min.js"></script>
+    <script src="~/lib/PhotoSwipe/photoswipe-ui-default.min.js"></script>
+}

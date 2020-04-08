@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome =1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="总裁班,总裁班培训,总裁培训,高管培训,企业培训" name="Keywords" />
+    <meta name="description"
+          content="我爱上课网，汇集国内外各大知名学府总裁研修班，以及环球杰出的企业家俱乐部。企业家培训，总裁班培训请选择我爱上课网！专门为您搭建“高”“精”“尖”的培训网络，我爱上课网只做有格调的总裁班，为你打造高精尖的培训。" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/mobile.css" asp-append-version="true" />
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top" id="navbar" style="background:#fff;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-xs-6 logo">
+                    <img src="~/images/m_logo.jpg" alt="logo" />
+                </div>
+                <div class="col-md-8 col-xs-6 text-right"
+                     style="position: relative; height: 55px; padding-right: 0px;">
+                    <div class="user_box">
+                        <img style="height: 29px;" src="~/images/reg_login.png" alt="reg_login" />
+
+                        @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                        {
+                        <text>欢迎，@(ViewContext.HttpContext.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value)</text>
+                        }
+                        else
+                        {
+                        <a asp-controller="account" asp-action="index" style="display: inline-block; ">登录/注册</a>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+
+    <footer>
+        <div class="container text-center" style="padding-right: 7px; padding-left: 10px;">
+
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img class="img-responsive" src="~/images/qr_code.png" alt="官方微博" />
+                    </div>
+                    <div class="panel-footer">
+                        官方微博
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img class="img-responsive" src="~/images/qr_code.png" alt="官方微信" />
+                    </div>
+                    <div class="panel-footer">
+                        官方微信
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img class="img-responsive" src="~/images/qr_code.png" alt="官方抖音" />
+                    </div>
+                    <div class="panel-footer">
+                        官方抖音
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img class="img-responsive" src="~/images/qr_code.png" alt="官方快手" />
+                    </div>
+                    <div class="panel-footer">
+                        官方快手
+                    </div>
+                </div>
+            </div>
+
+            <p>Copyright &copy; 敏太文化 2015 沪ICP备15053877</p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

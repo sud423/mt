@@ -1,0 +1,53 @@
+﻿body {
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    position: relative;
+}
+
+.index_bg {
+    background-image: url(../images/index_bg.jpg);
+    background-repeat: repeat;
+}
+
+.header {
+    position: absolute;
+    height: 85px;
+    display: block;
+    width: 100%;
+}
+
+.logo {
+    width: 290px;
+    margin: 10px 0 0 20px;
+    float: left;
+}
+
+.link {
+    float: right;
+    display: inline;
+    line-height: 92px;
+    margin-right: 22px;
+}
+
+    .link a {
+        border: 1px solid #571d21;
+        color: #571d21;
+        margin-right: 8px;
+    }
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index:-10;
+}
+
+.footer img {
+    vertical-align: bottom;
+}

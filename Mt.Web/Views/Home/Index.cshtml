@@ -1,0 +1,110 @@
+﻿@{
+//ViewData["Title"] = "Home Page";
+}
+@using System.Collections.Generic
+
+@model IEnumerable<Article>
+
+
+
+<div class="row region">
+    <div class="container">
+        <a name="qiyejieshao" class="dark"></a>
+        <h2 class="col-lg-12 text-center" style="font-size: 49px;">
+            <strong>企业介绍</strong>
+        </h2>
+        <p class="col-lg-12 text-center title">基础教育合作办学评估专家</p>
+        <div class="col-lg-12 text-center">
+            <video controls="controls" autoplay="autoplay" width="600px"
+                   controlslist="nodownload">
+                <source src="~/video/propaganda.mp4"
+                        type="video/mp4" />
+            </video>
+
+        </div>
+        <p class="col-lg-12"
+           style="padding: 0px; text-indent: 2em; line-height: 27px; margin: 40px 0px;">上海敏太文化传播有限公司成立于2015年11月，隶属于敏太集团旗下子公司之一，主营基础教育合作办学的第三方专业考察论证以及文化艺术交流与策划、市场营销策划、企业形象策划等。也是华东师范大学基础教育集团唯一指定合作单位。公司以专注、专业、专心的发展理念，以基础教育合作办学考察论证等方式，快速推动全国基础教育事业的发展。发挥社会主义核心价值观对国民基础教育、传统文化传承等起到引领作用。目前已经与新城控股集团、旭辉集团、金茂集团、华熙集团等多家知名企业达成战略合作伙伴关系。</p>
+    </div>
+</div>
+<div class="row region" style="background-color: #f2f2f2;">
+    <div class="container">
+        <a name="xinwenzixun" class="dark"></a>
+        <h2 class="col-lg-12 text-center" style="font-size: 49px;">
+            <strong>新闻资讯</strong>
+        </h2>
+        <p class="col-lg-12 text-center title">合作共赢开创未来</p>
+        <div class="col-lg-12" style="padding: 0px; margin-bottom: 80px;">
+            <div class="center-block" style="width: 800px;">
+                <ul>
+                    @foreach (var item in Model)
+                    {
+                        <li class="new_list_style">
+                            <span class="pull-left">
+                                <a style="color: inherit;"
+                                   href="/d/@(item.Id)">@(item.Title)</a>
+                            </span> <span class="pull-right">@(item.CreatedAt.ToString("yyyy-MM-dd"))</span>
+                        </li>
+                    }
+                 </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row region" style="margin-bottom: 45px;">
+    <div class="container">
+        <a name="jingcaishunjian" class="dark"></a>
+        <h2 class="col-lg-12 text-center" style="font-size: 49px;">
+            <strong>精彩瞬间</strong>
+        </h2>
+        <p class="col-lg-12 text-center title">记录每一个美好和精彩</p>
+        <div class="col-lg-4 mb-25 text-right"
+             style="padding: 0px; margin-bottom: 15px;">
+            <img src="~/images/1.jpg" />
+        </div>
+        <div class="col-lg-4 mb-25 text-center"
+             style="padding: 0px; margin-bottom: 15px;">
+            <img src="~/images/2.jpg" />
+        </div>
+        <div class="col-lg-4 mb-25 text-left"
+             style="padding: 0px; margin-bottom: 15px;">
+            <img src="~/images/3.jpg" />
+        </div>
+        <div class="col-lg-4 text-right"
+             style="padding: 0px; margin-bottom: 15px;">
+            <img src="~/images/4.jpg" />
+        </div>
+        <div class="col-lg-4 text-center"
+             style="padding: 0px; margin-bottom: 15px;">
+            <img src="~/images/5.jpg" />
+        </div>
+        <div class="col-lg-4 text-lfet"
+             style="padding: 0px; margin-bottom: 15px;">
+            <img src="~/images/6.jpg" />
+        </div>
+        <div class="col-lg-4 mb-25 text-right"
+             style="padding: 0px; margin-bottom: 15px;">
+            <img src="~/images/7.jpg" />
+        </div>
+        <div class="col-lg-4 mb-25 text-center"
+             style="padding: 0px; margin-bottom: 15px;">
+            <img src="~/images/8.jpg" />
+        </div>
+        <div class="col-lg-4 mb-25 text-left"
+             style="padding: 0px; margin-bottom: 15px;">
+            <img src="~/images/9.jpg" />
+        </div>
+        <div class="col-lg-4 text-right"
+             style="padding: 0px; margin-bottom: 15px;">
+            <img src="~/images/10.jpg" />
+        </div>
+        <div class="col-lg-4 text-center"
+             style="padding: 0px; margin-bottom: 15px;">
+            <img src="~/images/11.jpg" />
+        </div>
+        <div class="col-lg-4 text-lfet"
+             style="padding: 0px; margin-bottom: 15px;">
+            <img src="~/images/12.jpg" />
+        </div>
+    </div>
+</div>

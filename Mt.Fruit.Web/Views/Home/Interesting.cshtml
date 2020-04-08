@@ -1,0 +1,63 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "我爱果庄，趣闻杂谈";
+}
+
+<div class="container" style="margin-bottom:100px;">
+
+    <div class="row">
+        <div class="col-md-5">
+            <h3>趣闻杂谈……</h3>
+        </div>
+        <div class="col-md-7 text-right"
+             style="display: inline; line-height: 56px; height: 56px;">
+            <form class="form-inline">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="exampleInputAmount"
+                               placeholder="搜索感兴趣的水果……">
+                        <div class="input-group-addon">
+
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <a class="new" asp-action="post" asp-controller="my">发布趣闻</a>
+        </div>
+    </div>
+
+    <section id="list" style="margin-top:15px;">
+        
+    </section>
+    <div class="row mb-3" id="example" style="display:none">
+        <div class="media">
+            <div class="media-left">
+                <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 64px; height: 64px;" src="{4}" data-holder-rendered="true">
+            </div>
+            <div class="media-body" style="vertical-align: middle;">
+                <div>
+                    <a href="/detail/{5}"><h4 class="media-heading" style="display: inline;">{0}</h4></a>
+                    <small>{1}回复|{2}喜欢</small>
+                </div>
+                {3}
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/bootstrap-paginator.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        categoryId = 43;
+        getArticles(1);
+    </script>
+}

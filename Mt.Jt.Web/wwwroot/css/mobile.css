@@ -1,0 +1,62 @@
+
+body {
+    position: relative;
+    padding-top: 56px;
+}
+
+.row {
+    margin: 0px;
+}
+
+.user_box {
+    position: absolute;
+    bottom: 7px;
+}
+
+.user_box a {
+    padding-left: 3px;
+    color: #541a1f;
+    font-size: 12px;
+}
+
+.logo {
+    height: 55px;
+    position: relative;
+    padding-left: 0px;
+}
+
+.logo img {
+    height: 32px;
+    position: absolute;
+    bottom: 7px;
+}
+
+
+
+
+#nav .table {
+    text-align: center;
+    background-color: #9e3b28;
+    margin-bottom: 0px;
+}
+
+#nav .table>tbody>tr>td {
+    padding: 0px;
+    width: 33.3%
+}
+
+#nav .table a {
+    display: block;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    font-size: 13px;
+}
+
+.title {
+     margin-top: 10px;
+     margin-bottom: 8px;
+     font-size: 17px;
+     font-weight: bold;
+     text-align: center;
+ }

@@ -1,0 +1,57 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "注册-会员中心";
+}
+
+@model RegModel
+
+<div class="container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div id="login-box">
+            @*<h3>欢迎</h3>*@
+            <h4>请填写用户信息</h4>
+            <form asp-action="registered" asp-route-returnurl="@ViewBag.returnUrl" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(err => err.Errors))
+                    {
+                        <div class="alert alert-warning" role="alert">
+                            &nbsp;@error.ErrorMessage
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <label asp-for="NickName" class="control-label">昵称</label>
+                    <input asp-for="NickName" autocomplete="off" type="text" required class="form-control" />
+                    <span asp-validation-for="NickName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label">用户名</label>
+                    <input asp-for="UserName" required autocomplete="off" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label">密码</label>
+                    <input asp-for="Password" autocomplete="off" required type="password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Cell" class="control-label">手机号</label>
+                    <input asp-for="Cell" autocomplete="off" required class="form-control" />
+                    <span asp-validation-for="Cell" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="注 册" class="btn btn-primary btn-block" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

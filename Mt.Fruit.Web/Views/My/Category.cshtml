@@ -1,0 +1,59 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    ViewBag.Title = "我爱果庄，分类信息编辑";
+}
+
+@model Category
+
+<div class="container" style="padding:20px; margin-bottom:120px;background:#fff;">
+
+    <div class="row">
+        <partial name="_Nav" />
+
+        <div class="col-sm-8 col-sm-offset-1">
+            <ol class="breadcrumb">
+                <li><a asp-action="index">我的</a></li>
+                <li class="active">分类信息编辑</li>
+            </ol>
+            <form asp-action="category" method="post">
+                <div class="form-group">
+                    <input asp-for="Id" type="hidden" autocomplete="off" class="form-control" value="@(Model.Id)" />
+                    <input asp-for="Type" type="hidden" autocomplete="off" class="form-control" value="article" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">名称</label>
+                    <input asp-for="Name" required maxlength="100" autocomplete="off" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Descript" class="control-label">描述</label>
+                    <textarea id="editor_id" asp-for="Descript" autocomplete="off" rows="15" required class="form-control"></textarea>
+                    <span asp-validation-for="Descript" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="保  存" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <partial name="_KindeditorScriptsPartial" />
+
+    <script>
+        KindEditor.ready(function(K) {
+            window.editor = K.create('#editor_id', {
+                //uploadJson: "@Url.Action("Upload","Oss")",
+                items: [],
+                pasteType : 1
+            });
+        });
+    </script>
+}

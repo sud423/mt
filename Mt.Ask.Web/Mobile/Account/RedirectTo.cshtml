@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "手机号绑定-会员中心";
+}
+
+
+@model User
+<div class="container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div id="login-box">
+            <h4>绑定手机号</h4>
+            <form asp-action="BindCell" asp-route-returnurl="@ViewBag.ReturnUrl" method="post">
+
+                <div class="form-group">
+                    <label asp-for="Cell" class="control-label">手机号</label>
+                    <input asp-for="Cell" required autocomplete="off" class="form-control" />
+                    <span asp-validation-for="Cell" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="绑  定" class="btn btn-primary btn-block" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

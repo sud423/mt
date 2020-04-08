@@ -1,0 +1,16 @@
+﻿@{
+//ViewData["Title"] = "Privacy Policy";
+}
+
+@model Article
+
+
+
+    <div class="row region">
+        <div class="container">
+            <h2 class="col-lg-12 title">
+                <strong>@Model.Title</strong>
+            </h2>
+            <div class="col-lg-12">@Html.Raw(Model.Content)</div>
+        </div>
+    </div>

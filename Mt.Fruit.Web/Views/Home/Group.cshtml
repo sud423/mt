@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "我爱果庄，兴趣小组";
+
+    int l = Model.Count();
+    int rw = l / 4;
+
+    int row = l % 4 == 0 ? rw : rw + 1;
+}
+
+@model IEnumerable<Category>
+
+<div class="container" id="app">
+
+    <div class="row">
+        <div class="col-md-5">
+            <h2 class="title">兴趣小组……</h2>
+        </div>
+        <div class="col-md-7 text-right"
+                style="display: inline; line-height: 70px; height: 70px;">
+            <form class="form-inline">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="exampleInputAmount"
+                                placeholder="搜索感兴趣的水果……">
+                        <div class="input-group-addon">
+
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    @for (int r = 0; r < row; r++)
+    {
+        <div class="row">
+            @for (int i = r * 4; i < ((r + 1) * 4 > l ? l : (r + 1) * 4); i++)
+            {
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <a asp-action="interestgroup" asp-route-id="@(Model.ElementAt(i)?.Id)"><img src="@(Model.ElementAt(i)?.SmallPic)" alt="@(Model.ElementAt(i)?.Name)" /></a>
+                        </div>
+                        <div class="panel-footer font-space">
+                            <a asp-action="interestgroup" asp-route-id="@(Model.ElementAt(i)?.Id)">@(Model.ElementAt(i)?.Name)</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

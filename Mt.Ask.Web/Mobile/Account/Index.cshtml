@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "登录-会员中心";
+}
+
+@model LoginModel
+
+<div class="container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div id="login-box">
+            <h3>欢迎</h3>
+            <h4>请登录</h4>
+            <form asp-action="Login" asp-route-returnurl="@ViewBag.returnUrl" method="post">
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label">UserName</label>
+                    <input asp-for="UserName" required autocomplete="off" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label">Password</label>
+                    <input asp-for="Password" autocomplete="off" required type="password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="登 录" class="btn btn-primary btn-block" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

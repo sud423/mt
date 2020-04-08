@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = Model.Name + "，我爱上课";
+}
+@model Course
+
+<div class="row region" style="margin-bottom: 113px;">
+    <div class="container">
+        <h2 class="col-lg-12 text-center">
+            <strong>@(Model.Name)</strong>
+        </h2>
+        <p class="col-lg-12 text-center title" style="margin-bottom: 10px;">联系方式</p>
+
+        <p class="col-lg-12">
+            <span>咨询电话：<strong>021-3112269 </strong></span>
+            <span style="margin-right:10px;">张老师：<strong>15221256681</strong></span>
+            <span style="margin-right:10px;">邮箱：kevin@5-ask.com</span>
+        </p>
+        <p class="col-lg-12 text-center title" style="margin-bottom:0px;margin-top:10px;">院校介绍</p>
+        <div class="col-lg-12">@Html.Raw(Model.BackSummary)</div>
+        <p class="col-lg-12 text-center title" style="margin-bottom:0px;margin-top:10px;">基本信息</p>
+        <div class="col-lg-12">@Html.Raw(Model.BaseInfo)</div>
+        <p class="col-lg-12 text-center title" style="margin-bottom:0px;margin-top:10px;">课程模块</p>
+        <div class="col-lg-12">@Html.Raw(Model.Summary)</div>
+        <p class="col-lg-12 text-center title" style="margin-bottom:0px;margin-top:10px;">师资介绍</p>
+        <div class="col-lg-12">@Html.Raw(Model.TeaSummary)</div>
+    </div>
+</div>

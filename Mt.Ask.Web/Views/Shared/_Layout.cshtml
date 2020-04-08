@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome =1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta content="总裁班,总裁班培训,总裁培训,高管培训,企业培训" name="Keywords" />
+    <meta name="description"
+          content="我爱上课网，汇集国内外各大知名学府总裁研修班，以及环球杰出的企业家俱乐部。企业家培训，总裁班培训请选择我爱上课网！专门为您搭建“高”“精”“尖”的培训网络，我爱上课网只做有格调的总裁班，为你打造高精尖的培训。" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12 logo">
+                        <img src="~/images/logo.png" alt="logo" />
+                    </div>
+                    <div class="col-md-8 col-xs-12">
+                        <div class="row">
+                            <div class="col-md-12 text-right" style="padding-top:6px;">
+                                <span>全国统一咨询热线：<strong>021-80198325</strong></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <ul class="nav navbar-nav pull-right">
+                                <li><a href="/">首页</a></li>
+                                <li><a href="/#qiyejieshao">企业介绍</a></li>
+                                <li><a href="/#gongkaike">公开课</a></li>
+                                <li><a href="/#kechengyudingzhi">课程与定制</a></li>
+                                <li><a href="/#yuanxiao">院校</a></li>
+                                <li><a href="/#zhuanjiayuxiaoyou">专家与校友</a></li>
+                                <li><a href="/#xianshangxuexi">线上学习</a></li>
+                                <li>
+                                    <a href="/account/index"
+                                       style="display: inline-block; padding-right: 5px;">登录</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody()
+
+    <footer>
+        <div class="container">
+            <div class="row" style="magin:0px;">
+                <div class="col-lg-12 text-center">
+                    <h1 class="section-heading" style="margin: 40px 0px 50px;">请与我们联系</h1>
+                    <p style="font-size:18px;">如果您正准备要上课或想上课请与我们联系。这很棒！给我们一个电话或邮件，我们会尽快满足您的要求！</p>
+                </div>
+            </div>
+
+            <div class="row" style="margin:45px 0px; ">
+                <div class="col-md-3 col-xs-12" style="padding:20px 0px 25px 15px;border-right: 1px solid;">
+                    <h4>招生咨询</h4>
+                    <div>
+                        <i class="fa fa-phone fa-3x wow bounceIn pull-left"></i>
+                        <div>
+                            <span style="font-size:10px;display:block">全国统一招生及课程咨询热线</span>
+                            <span style="letter-spacing:1.3px;font-size:22px;">021-80198325</span>
+                        </div>
+                    </div>
+                    <p class="clearfix">
+                        <span style="letter-spacing:1.8px;font-size:22px;"><a href="mailto:kevin@5-ask.com">kevin@5-ask.com</a></span>
+                    </p>
+                </div>
+                <div class="col-md-3 col-xs-12" style="padding-top:20px;padding-left:43px;border-right: 1px solid;height:173px;">
+                    <h4>资料下载</h4>
+                    <p>
+                        <a style="font-size:12px;" href="/download?fileName=【我爱上课】环球CEO高层智慧研修班报名表.docx">【环球CEO高层智慧研修班】报名表</a>
+                    </p>
+                </div>
+                <div class="col-md-6 col-xs-12" style="padding-top:20px;">
+                    <div class="row text-center">
+                        <img class="thumbnail qrcode" src="~/images/wx_qr.jpg" alt="wxqrcode" />
+                        <img class="thumbnail qrcode" src="~/images/wb_qr.jpg" alt="wbqrcode" />
+                        <img class="thumbnail qrcode" src="~/images/dy_qr.jpg" alt="dyqrcode" />
+                    </div>
+                    <p>扫一扫关注我爱上课官方微信公众号、官方新浪微博、官方抖音了解更多精彩课程资讯</p>
+                </div>
+            </div>
+
+            <div class="row text-center" style="margin: 45px 0px;">
+                <p>Copyright &copy; 敏太文化 2015 <a href="http://www.beian.miit.gov.cn" target="_blank">沪ICP备15053877</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

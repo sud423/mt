@@ -1,0 +1,185 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "我爱果庄，兴趣小组";
+}
+
+@model Category
+
+<section>
+    <div class="container" style="margin-bottom:100px;">
+        <div class="row group">
+            <div class="col-md-12 text-right" style="padding: 20px 0px;">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="exampleInputAmount"
+                                   placeholder="搜索感兴趣的水果……">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="@(Model.BigPic)" alt="@(Model.Name)" />
+                    </div>
+                    <div class="panel-footer">
+                        <h2>@Model.Name</h2>
+                        <div style="display: inline-block;text-align: left">
+                            <p style="margin-top: 10px;"><i class="love"></i>@(Model.Fllows)人喜欢</p>
+                            <p style="margin-top: 5px;"><i class="add"></i>关注@(Model.Name)小组</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                @Html.Raw(Model.Descript)
+            </div>
+        </div>
+
+        <div class="row" style="margin: 0px;">
+            <table class="table table-bordered table-striped table-hover" style="background-color:#fff;">
+                <thead>
+                    <tr>
+                        <th>主题</th>
+                        <th style="width:120px">作者</th>
+                        <th style="width:100px">回复/浏览</th>
+                        <th style="width:120px">最后回复</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                    <tr id="trExample" style="display:none;">
+                        <td><a href="/detail/{4}">{0}</a></td>
+                        <td>{1}</td>
+                        <td>{2}</td>
+                        <td>{3}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <nav class="text-left">
+                                <!--text-right 右对齐，bootstrap中样式-->
+                                <ul class="pagination"></ul>
+                            </nav>
+                        </td>
+                        <td>
+                            <a class="new" asp-action="create" asp-controller="my" asp-route-cid="@(Model.Id)">发新贴</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div>
+            </div>
+        </div>
+
+        <div class="row group" style="padding: 0px 60px;">
+            <div class="col-md-12">
+                <h4 style="font-weight: bold; margin: 20px 0px;">一起来分享@(Model.Name)照片</h4>
+            </div>
+            <div id="list">
+
+
+            </div>
+            @*<div class="col-lg-4 first-child">
+                    <img src="~/images/smt/1.jpg" alt="@(Model.Name)" />
+                </div>
+                <div class="col-lg-4">
+                    <img src="~/images/smt/2.jpg" alt="@(Model.Name)" />
+                </div>
+                <div class="col-lg-4 last-child">
+                    <img src="~/images/smt/3.jpg" alt="@(Model.Name)" />
+                </div>
+                <div class="col-lg-4 first-child">
+                    <img src="~/images/smt/4.jpg" alt="@(Model.Name)" />
+                </div>
+                <div class="col-lg-4">
+                    <img src="~/images/smt/5.jpg" alt="@(Model.Name)" />
+                </div>*@
+            <div class="col-lg-4 last-child new_upload">
+                <a asp-action="resource" class="addblock" asp-controller="my" asp-route-cid="@(Model.Id)"><img src="~/images/add.png" alt="上传新水果照片" /></a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+        <!-- Background of PhotoSwipe.
+            It's a separate element, as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+
+            <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+            <div class="pswp__container">
+                <!-- don't modify these 3 pswp__item elements, data is added later on -->
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+
+                <div class="pswp__top-bar">
+
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+
+                    <div class="pswp__counter"></div>
+
+                    <button class="pswp__button pswp__button--close" title="关闭 (Esc)"></button>
+
+                    <button class="pswp__button pswp__button--zoom" title="放大/缩小"></button>
+
+                    <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+
+                <button class="pswp__button pswp__button--arrow--left" title="上一张"></button>
+
+                <button class="pswp__button pswp__button--arrow--right" title="下一张"></button>
+
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+@section Scripts{
+    <link href="~/lib/PhotoSwipe/photoswipe.css" rel="stylesheet" />
+    <link href="~/lib/PhotoSwipe/default-skin/default-skin.css" rel="stylesheet" />
+    <script src="~/lib/PhotoSwipe/photoswipe.min.js"></script>
+    <script src="~/lib/PhotoSwipe/photoswipe-ui-default.min.js"></script>
+    <script src="~/js/bootstrap-paginator.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        categoryId =@(ViewBag.CategoryId);
+        getArticles(1);
+        getResource(1, 5);
+    </script>
+}

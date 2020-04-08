@@ -1,0 +1,434 @@
+﻿@{
+    ViewData["Title"] = "我爱上课网，企业家，总裁培训，就选“我爱上课网”！";
+}
+
+@model Tuple<IEnumerable<Course>,IEnumerable<Course>,IEnumerable<Article>,IEnumerable<Article>>
+
+<div class="row region">
+    <div class="container">
+        <a name="qiyejieshao" class="dark"></a>
+        <h2 class="col-lg-12 text-center" style="font-size: 49px;">
+            <strong>企业介绍</strong>
+        </h2>
+        <p class="col-lg-12 text-center title">高端教育培训及企业定制专家</p>
+        <div class="col-lg-12 text-center">
+            <video controls="controls" autoplay="autoplay" width="600px"
+                   controlslist="nodownload">
+                <source src="~/video/propaganda.mp4"
+                        type="video/mp4" />
+            </video>
+
+        </div>
+        <p class="col-lg-12"
+           style="padding: 0px; text-indent: 2em; line-height: 27px; margin: 40px 0px;">
+            【我爱上课】知名注册品牌是从事国内与国际并举、专业与实践并进的学历后高端教育服务平台，平台“一站式高端人才培养，铸就优质教育平台”为服务宗旨，
+            引进海内外高端教育资源，汇集北大、清华、人大、交大、复旦和中大等国内一流高校优秀师资和精品课程资源，依托知名高校优良办学传统和优势，
+            始终坚持将科研和实业相结合，充分发挥用教育服务地方带动经济发展的社会基本功能，积极构建“人本至上”的服务运行机制，提供系统的组织战略规划、
+            人才培养和资源开发、终身学习体系建设等综合性教育咨询和服务。
+        </p>
+    </div>
+</div>
+<div class="row region" style="background-color: #f2f2f2;">
+    <div class="container">
+        <a name="gongkaike" class="dark"></a>
+        <h2 class="col-lg-12 text-center" style="font-size: 49px;">
+            <strong>公开课</strong>
+        </h2>
+        <p class="col-lg-12 text-center title">环球CEO高层智慧研修班</p>
+        <div class="col-lg-12 text-center"
+             style="padding: 0px; margin-bottom: 80px;">
+            <img style="width: 100%;" alt="公开课介绍"
+                 src="~/images/gkk-bg.png" />
+        </div>
+        <div class="col-lg-4 mb-25 text-right" style="padding: 0px;">
+            <img class="card-img-top"
+                 src="~/images/gkk-1.jpg" alt="">
+        </div>
+        <div class="col-lg-4 mb-25 text-center" style="padding: 0px;">
+            <img class="card-img-top"
+                 src="~/images/gkk-2.jpg" alt="">
+        </div>
+        <div class="col-lg-4 mb-25 text-left" style="padding: 0px;">
+            <a href="/jingcai">
+                <img class="card-img-top"
+                     src="~/images/gkk-3.jpg" alt="">
+            </a>
+        </div>
+        <div class="col-lg-4 text-right" style="padding: 0px;">
+            <img class="card-img-top"
+                 src="~/images/gkk-4.jpg" alt="">
+        </div>
+        <div class="col-lg-4 text-center" style="padding: 0px;">
+            <img class="card-img-top"
+                 src="~/images/gkk-5.jpg" alt="">
+        </div>
+        <div class="col-lg-4 text-lfet" style="padding: 0px;">
+            <img class="card-img-top"
+                 src="~/images/gkk-6.jpg" alt="">
+        </div>
+        <div class="col-lg-12 text-left">
+            <span style="width:800px;display:block;font-size: 25px;margin: 25px auto 20px; color: #541a1f;"><a href="/detail/@(Model.Item2.FirstOrDefault().Id)">《@(Model.Item2.FirstOrDefault().Name)》</a>公开课火热进行中！<a href="/download?fileName=【我爱上课】环球CEO高层智慧研修班报名表.docx">点击报名……</a></span>
+
+            <span style="width:800px;display:block;font-size: 25px;margin: 0px auto 30px; color: #541a1f;"><a href="/detail/@(Model.Item2.LastOrDefault().Id)">《@(Model.Item2.LastOrDefault().Name)》</a>公开课火热进行中！<a>点击报名……</a></span>
+        </div>
+    </div>
+</div>
+<div class="row region" style="margin-bottom: 45px;">
+    <div class="container">
+        <a name="kechengyudingzhi" class="dark"></a>
+        <h2 class="col-lg-12 text-center" style="font-size: 49px;">
+            <strong>课程与定制</strong>
+        </h2>
+        <p class="col-lg-12 text-center title">高质量打造个人与企业专属特色</p>
+        <div class="col col-219" style="margin-left: 4px;">
+            <a href="/kc/zongheguanli">
+                <img src="~/images/zhgl.jpg" alt="综合管理" /><span>综合管理</span>
+            </a>
+        </div>
+        <div class="col col-219">
+            <a href="/kc/gongsizhili">
+                <img src="~/images/gszl.jpg" alt="公司治理" /><span>公司治理</span>
+            </a>
+        </div>
+        <div class="col col-219">
+            <a href="/kc/shichangyingxiao">
+                <img src="~/images/scyx.jpg" alt="市场营销" />
+                <span>市场营销</span>
+            </a>
+        </div>
+        <div class="col col-219">
+            <a href="/kc/jinrongyucaiwu">
+                <img src="~/images/jrycw.jpg"
+                     alt="金融与财务" /><span>金融与财务</span>
+            </a>
+        </div>
+        <div class="col col-219" style="margin-right: 0px;">
+            <a href="/kc/hulianwang">
+                <img src="~/images/hlw.jpg" alt="互联网+" /><span>互联网+</span>
+            </a>
+        </div>
+        <div class="col col-219" style="margin-left: 4px;">
+            <a href="/kc/chuangyechuangxin">
+                <img src="~/images/cycx.jpg" alt="创业创新" /><span>创业创新</span>
+            </a>
+        </div>
+        <div class="col col-219">
+            <a href="/kc/yishurenwen">
+                <img src="~/images/ysrw.jpg" alt="艺术人文" /><span>艺术人文</span>
+            </a>
+        </div>
+        <div class="col col-219">
+            <a href="/kc/youxue">
+                <img src="~/images/yx.jpg" alt="游学" /><span style="letter-spacing: 10px;">游学</span>
+            </a>
+        </div>
+        <div class="col col-219">
+            <a href="/kc/qiyeneixun">
+                <img src="~/images/qynx.jpg" alt="企业内训" /><span>企业内训</span>
+            </a>
+        </div>
+        <div class="col col-219" style="margin-right: 0px;">
+            <a href="/dingzhi">
+                <img src="~/images/tsdz.jpg" alt="特色定制" /><span>特色定制</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row region" style="background-color: #f2f2f2; padding-bottom: 80px;">
+    <div class="container">
+        <a name="yuanxiao" class="dark"></a>
+        <h2 class="col-lg-12 text-center" style="font-size: 49px;">
+            <strong>院校</strong>
+        </h2>
+        <p class="col-lg-12 text-center title">携手共创多赢局面</p>
+        <div class="col-lg-12" style="height: 119px;"></div>
+        <div class="row" style="margin: 0px;">
+            <div class="col-270">
+                <div class='sharp' style="margin-left: 90px;">
+                    <a href="/yx/beijingdaxue">
+                        <img src="~/images/bj.png" alt="北京大学" />
+                        <p>北京大学</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-270" style="margin-top: -119px; margin-left: 30px;">
+                <div class='sharp'>
+                    <a href="/yx/qinghuadaxue">
+                        <img src="~/images/qh.png" alt="清华大学" />
+                        <p>清华大学</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-270">
+                <div class='sharp' style="margin-left: -60px">
+                    <a href="/yx/fudandaxue">
+                        <img src="~/images/fd.png" alt="复旦大学" />
+                        <p>复旦大学</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-270">
+                <div class='sharp' style="margin-left: 90px;">
+                    <a href="/yx/tongjidaxue">
+                        <img src="~/images/tj.png" alt="同济大学" />
+                        <p>同济大学</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin: 30px 0px 0px;">
+            <div class="col-270">
+                <div class='sharp' style="margin-left: 90px;">
+                    <a href="/yx/shjiaotongdaxue">
+                        <img src="~/images/jt.png"
+                             alt="上海交通大学" />
+                        <p>上海交通大学</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-270" style="margin-top: -119px; margin-left: 30px">
+                <div class='sharp'>
+                    <a href="/yx/zhongshandaxue">
+                        <img src="~/images/zs.png" alt="中山大学" />
+                        <p>中山大学</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-270" style="margin-top: -119px;">
+                <div class='sharp' style="margin-left: 150px;">
+                    <a href="/yx/zgrenmindaxue">
+                        <img src="~/images/rm.png"
+                             alt="中国人民大学" />
+                        <p>中国人民大学</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-270">
+                <div class='sharp' style="margin-left: 90px; padding-top: 67.5px;">
+                    <a href="/yx/woaishangke">
+                        <img src="~/images/wask.png"
+                             alt="我爱上课" />
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row region" style="padding-bottom: 40px;">
+    <div class="container">
+        <a name="zhuanjiayuxiaoyou" class="dark"></a>
+        <h2 class="col-lg-12 text-center" style="font-size: 49px; margin-bottom: 60px">
+            <strong>专家与校友</strong>
+        </h2>
+        <div class="col col-340" style="margin-right: 30px;">
+            <img src="~/images/logo.png"
+                 style="width: 75px; margin-top: 15px; margin-bottom: 7px;"
+                 alt="logo" />
+            <p style="font-size: 13px; margin-bottom: 7px; color: #541a1f; letter-spacing: -1px;">环球CEO高层智慧研修班首期班学员</p>
+            <img src="~/images/xy1.jpg"
+                 alt="环球CEO高层智慧研修班首期班学员" />
+        </div>
+        <div class="col col-340" style="margin: 0px 30px 60px 30px;">
+            <img src="~/images/logo.png"
+                 style="width: 75px; margin-top: 15px; margin-bottom: 7px;"
+                 alt="logo" />
+            <p style="font-size: 13px; margin-bottom: 7px; color: #541a1f; letter-spacing: -1px;">环球CEO高层智慧研修班首期班学员</p>
+            <img src="~/images/xy2.jpg"
+                 alt="环球CEO高层智慧研修班首期班学员" />
+        </div>
+        <div class="col col-340" style="margin-left: 30px;">
+            <img src="~/images/logo.png"
+                 style="width: 75px; margin-top: 15px; margin-bottom: 7px;"
+                 alt="logo" />
+            <p style="font-size: 13px; margin-bottom: 7px; color: #541a1f; letter-spacing: -1px;">环球CEO高层智慧研修班首期班学员</p>
+            <img src="~/images/xy3.jpg"
+                 alt="环球CEO高层智慧研修班首期班学员" />
+        </div>
+        <div class="col col-340" style="margin-right: 30px;">
+            <img src="~/images/logo.png"
+                 style="width: 75px; margin-top: 15px; margin-bottom: 7px;"
+                 alt="logo" />
+            <p style="font-size: 13px; margin-bottom: 7px; color: #541a1f; letter-spacing: -1px;">环球CEO高层智慧研修班首期班学员</p>
+            <img src="~/images/xy4.jpg"
+                 alt="环球CEO高层智慧研修班首期班学员" />
+        </div>
+        <div class="col col-340" style="margin: 0px 30px 60px 30px;">
+            <img src="~/images/logo.png"
+                 style="width: 75px; margin-top: 15px; margin-bottom: 7px;"
+                 alt="logo" />
+            <p style="font-size: 13px; margin-bottom: 7px; color: #541a1f; letter-spacing: -1px;">环球CEO高层智慧研修班首期班学员</p>
+            <img src="~/images/xy5.jpg"
+                 alt="环球CEO高层智慧研修班首期班学员" />
+        </div>
+        <div class="col col-340" style="margin-left: 30px;">
+            <img src="~/images/logo.png"
+                 style="width: 75px; margin-top: 15px; margin-bottom: 7px;"
+                 alt="logo" />
+            <p style="font-size: 13px; margin-bottom: 7px; color: #541a1f; letter-spacing: -1px;">环球CEO高层智慧研修班首期班学员</p>
+            <img src="~/images/xy6.jpg"
+                 alt="环球CEO高层智慧研修班首期班学员" />
+        </div>
+
+        <p class="text-right">
+            <a class="more" href="/zjxy">查看更多</a>
+        </p>
+    </div>
+</div>
+<div class="row region" style="background-color: #f2f2f2; padding-bottom: 40px;">
+    <div class="container">
+        <a name="xianshangxuexi" class="dark"></a>
+        <h2 class="col-lg-12 text-center" style="font-size: 49px;">
+            <strong>线上学习</strong>
+        </h2>
+        <p class="col-lg-12 text-center title">随时随地学习提升</p>
+        <div class="col-lg-4 mb-4 text-center">
+            <a href="https://app550xDol84622.h5.xiaoeknow.com"><img src="~/images/on_3.jpg" /></a>
+        </div>
+        <div class="col-lg-4 mb-4 text-center">
+            <a href="https://app550xDol84622.h5.xiaoeknow.com"><img src="~/images/on_1.jpg" alt="更多精彩课程" /></a>
+        </div>
+        <div class="col-lg-4 mb-4 text-center">
+            <a href="https://app550xDol84622.h5.xiaoeknow.com"><img src="~/images/on_2.jpg" /></a>
+        </div>
+        @*<p class="text-right">
+            <a href="/online" class="more">查看更多</a>
+        </p>*@
+    </div>
+</div>
+<div class="row region" style="margin-bottom: 80px;">
+    <div class="container">
+        <a name="qita" class="dark"></a>
+        <h2 class="col-lg-12 text-center" style="font-size: 49px; margin-bottom: 40px;">
+            <strong>其它</strong>
+        </h2>
+        <div class="col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h4>近期开课</h4>
+                </div>
+                <div class="panel-body" style="height: 240px;">
+                    <table class="table" style="table-layout: fixed;">
+
+                        @foreach (var item in Model.Item1)
+                        {
+                            <tr>
+                                <td>
+                                    <a href="/detail/@(item.Id)" title="@(item.Name)">@(item.Name)</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+                <div class="panel-footer smore">
+                    <a class="btn btn-default"
+                       href="/qt/jinqikaike" role="button">更多</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h4>活动预告</h4>
+                </div>
+                <div class="panel-body" style="height: 240px;">
+                    <table class="table" style="table-layout: fixed;">
+                        @foreach (var item in Model.Item3)
+                        {
+                            <tr>
+                                <td>
+                                    <a href="/announce/@(item.Id)" title="@(item.Title)">@(item.Title)</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+                <div class="panel-footer smore">
+                    <a class="btn btn-default"
+                       href="/qt/huodongyugao" role="button">更多</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h4>搜索排行</h4>
+                </div>
+                <div class="panel-body" style="height: 240px;">
+                    <table class="table" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>院校</th>
+                                <th>整体日均</th>
+                                <th>移动日均</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>清华大学</td>
+                            <td>15,500</td>
+                            <td>7,000</td>
+                            <td><font color="red" size="1">&nbsp;top1</font></td>
+                        </tr>
+                        <tr>
+                            <td>北京大学</td>
+                            <td>13,800</td>
+                            <td>6,100</td>
+                            <td><font color="green" size="1">&nbsp;top2</font></td>
+                        </tr>
+                        <tr>
+                            <td>武汉大学</td>
+                            <td>13,500</td>
+                            <td>6,500</td>
+                            <td><font color="green" size="1">&nbsp;top3</font></td>
+                        </tr>
+                        <tr>
+                            <td>复旦大学</td>
+                            <td>11,100</td>
+                            <td>5,600</td>
+                            <td><font color="green" size="1">&nbsp;top4</font></td>
+                        </tr>
+                        <tr>
+                            <td>浙江大学</td>
+                            <td>10,100</td>
+                            <td>4,700</td>
+                            <td><font color="green" size="1">&nbsp;top5</font></td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="panel-footer smore">
+                    <a class="btn btn-default"
+                       href="/paihangbang" role="button">更多</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h4>焦点文章</h4>
+                </div>
+                <div class="panel-body" style="height: 240px; margin-top: 3px;">
+                    <table class="table" style="table-layout: fixed;">
+                        @foreach (var item in Model.Item4)
+                        {
+                            <tr>
+                                <td>
+                                    <a href="/news/@(item.Id)" title="@(item.Title)">@(item.Title)</a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+                <div class="panel-footer smore">
+                    <a class="btn btn-default"
+                       href="/qt/jiaodianwenzhang"
+                       role="button">更多</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

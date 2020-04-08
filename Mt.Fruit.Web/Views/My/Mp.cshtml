@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "我爱果庄，我的-视频";
+}
+
+
+<div class="container" style="padding:20px; margin-bottom:120px;background:#fff;">
+
+    <div class="row">
+        <partial name="_Nav" />
+
+        <div class="col-sm-8 col-sm-offset-1">
+            <ol class="breadcrumb">
+                <li><a asp-action="index">我的</a></li>
+                <li class="active">视频</li>
+            </ol>
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>标题</th>
+                        <th>路径</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody id="list">
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">
+                            <nav class="text-left">
+                                <!--text-right 右对齐，bootstrap中样式-->
+                                <ul class="pagination"></ul>
+                            </nav>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+@section Scripts{
+    <script src="~/js/bootstrap-paginator.js"></script>
+    <script type="text/javascript">
+        t = "video";
+        getResources(1);
+    </script>
+}
