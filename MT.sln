@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mt.Web", "Mt.Web\Mt.Web.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mt.Ask.Api", "Mt.Ask.Api\Mt.Ask.Api.csproj", "{9B057240-B182-4A31-8F30-22E63A935698}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mt.Jt.Web", "Mt.Jt.Web\Mt.Jt.Web.csproj", "{03E2407C-1E7F-4A72-AB06-E173FC79AAEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mt.Jt.Web", "Mt.Jt.Web\Mt.Jt.Web.csproj", "{03E2407C-1E7F-4A72-AB06-E173FC79AAEF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mt.Ask.Web", "Mt.Ask.Web\Mt.Ask.Web.csproj", "{A4E12A5C-9392-46F7-9944-98291EE14EA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mt.Fruit.Web", "Mt.Fruit.Web\Mt.Fruit.Web.csproj", "{6587D947-E2C1-4F2C-A432-E5E189F36E01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mt.Fruit.Web", "Mt.Fruit.Web\Mt.Fruit.Web.csproj", "{6587D947-E2C1-4F2C-A432-E5E189F36E01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mt.Edu.Api", "Mt.Edu.Api\Mt.Edu.Api.csproj", "{D70D5F52-E2DA-43AC-8B17-01D2A8354820}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{6587D947-E2C1-4F2C-A432-E5E189F36E01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6587D947-E2C1-4F2C-A432-E5E189F36E01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6587D947-E2C1-4F2C-A432-E5E189F36E01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D70D5F52-E2DA-43AC-8B17-01D2A8354820}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D70D5F52-E2DA-43AC-8B17-01D2A8354820}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D70D5F52-E2DA-43AC-8B17-01D2A8354820}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D70D5F52-E2DA-43AC-8B17-01D2A8354820}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
