@@ -23,6 +23,7 @@ namespace Mt.Ocelot.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOcelot();
+
             services.AddCors(options =>
             {
                 options.AddPolicy(name: MyAllowSpecificOrigins,
@@ -39,8 +40,8 @@ namespace Mt.Ocelot.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             // Make sure you call this before calling app.UseMvc()
-            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseRouting();
 
@@ -51,6 +52,8 @@ namespace Mt.Ocelot.Api
                     await context.Response.WriteAsync("Ok");
                 });
             });
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseOcelot().Wait();//使用Ocelot中间件
         }

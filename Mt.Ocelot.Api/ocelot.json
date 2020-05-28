@@ -1,11 +1,12 @@
 {
   "GlobalConfiguration": {
-    "ConfigurationKey": "Csp_Ocelot_Api_Gateway",
-    "Host": "localhost",
-    "Port": 8500,
-    "Type": "Consul"
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500,
+      "ConfigurationKey": "MT_Ocelot_Api_Gateway"
+    }
   },
-  "ReRoutes": [
+  "Routes": [
     {
       "DownstreamPathTemplate": "/api/v1/wx/{action}", //下游服务配置,提供API服务的配置
       "DownstreamScheme": "http",
