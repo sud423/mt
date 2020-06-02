@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mt.Fruit.Web", "Mt.Fruit.We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mt.Edu.Api", "Mt.Edu.Api\Mt.Edu.Api.csproj", "{D70D5F52-E2DA-43AC-8B17-01D2A8354820}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mt.Ocelot.Api", "Mt.Ocelot.Api\Mt.Ocelot.Api.csproj", "{5BEA93A2-07F2-45A6-A754-FEFFD06975AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mt.Ocelot.Api", "Mt.Ocelot.Api\Mt.Ocelot.Api.csproj", "{5BEA93A2-07F2-45A6-A754-FEFFD06975AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

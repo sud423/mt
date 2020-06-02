@@ -40,7 +40,7 @@ namespace Mt.Edu.Api.Models
         /// <summary>
         /// 来源 1自有 10业务员开拓 20来公司咨询 30来电咨询 40活动讲座 50网上广告推广 60线下广告推广
         /// </summary>
-        public string Source { get; set; }
+        public byte Source { get; set; }
 
         /// <summary>
         /// 状态 1：正常 0：删除

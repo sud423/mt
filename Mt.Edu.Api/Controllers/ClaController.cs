@@ -27,7 +27,7 @@ namespace Mt.Edu.Api.Controllers
         /// 获取班级树
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet, Route("gettree")]
         public async Task<IActionResult> GetClaTree(string channel)
         {
             var clas = await _ctx.Clas.Where(a=>a.Status && a.Channel==channel).ToListAsync();
@@ -49,7 +49,7 @@ namespace Mt.Edu.Api.Controllers
         /// <param name="isCla">是否查班级</param>
         /// <param name="name">名称</param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet, Route("getall")]
         public async Task<IActionResult> GetAll(string channel, bool isCla,int page,int size,string name="")
         {
             var predicate = PredicateExtension.True<Cla>();
@@ -78,7 +78,7 @@ namespace Mt.Edu.Api.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpPost, Route("create")]
         public IActionResult Create(Cla cla)
         {
             if (!ModelState.IsValid)
@@ -105,7 +105,7 @@ namespace Mt.Edu.Api.Controllers
         /// </summary>
         /// <param name="id">项目 或班级信息</param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost, Route("{delete:int}")]
         public IActionResult Delete(int id)
         {
             var cla = _ctx.Clas.FirstOrDefault(a=>a.Id==id);
