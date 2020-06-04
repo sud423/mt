@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Csp.Web" Version="1.0.0" />
+    <PackageReference Include="Csp.Web" Version="1.0.1" />
   </ItemGroup>
 
 

@@ -1,12 +1,14 @@
 ﻿using Csp.EF.Extensions;
 using Csp.EF.Paging;
 using Csp.Web;
+using Csp.Web.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mt.Edu.Api.Factories;
 using Mt.Edu.Api.Infrastructure;
 using Mt.Edu.Api.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -50,14 +52,24 @@ namespace Mt.Edu.Api.Controllers
         /// <param name="name">名称</param>
         /// <returns></returns>
         [HttpGet, Route("getall")]
-        public async Task<IActionResult> GetAll(string channel, bool isCla,int page,int size,string name="")
+        public async Task<IActionResult> GetAll(string channel, bool isCla, int page, int size, string name = "")
         {
             var predicate = PredicateExtension.True<Cla>();
-            predicate = predicate.And(a => a.Channel == channel).And(a => isCla ? a.ParentId != 0 : a.ParentId == 0);
+            predicate = predicate.And(a => a.Channel == channel);
+            predicate = predicate.And(a => a.Status);
+            predicate = predicate.And(a => isCla ? a.ParentId != 0 : a.ParentId == 0);
             if (!string.IsNullOrEmpty(name))
                 predicate = predicate.And(a => a.Name.Contains(name));
 
-            var clas = await _ctx.Clas.Where(predicate).ToPagedAsync(page, size);
+            var clas = await _ctx.Clas.Where(predicate).OrderByDescending(a=>a.CreatedAt).Select(a => new
+            {
+                a.Id,
+                a.Name,
+                a.Channel,
+                a.Summary,
+                a.Remark,
+                a.ParentId
+            }).ToPagedAsync(page, size);
 
             return Ok(clas);
         }
@@ -75,14 +87,22 @@ namespace Mt.Edu.Api.Controllers
 
             var result = await _ctx.Clas.SingleOrDefaultAsync(a => a.Id == id);
 
-            return Ok(result);
+            return Ok(new
+            {
+                result.Id,
+                result.Name,
+                result.Channel,
+                result.Summary,
+                result.Remark,
+                result.ParentId
+            });
         }
 
         [HttpPost, Route("create")]
-        public IActionResult Create(Cla cla)
+        public IActionResult Create([FromBody]Cla cla)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState.First());
+                return BadRequest(ModelState.ToOptResult());
             if (cla.Id > 0)
             {
                 var old = _ctx.Clas.FirstOrDefault(a=>a.Id==cla.Id);
@@ -105,7 +125,7 @@ namespace Mt.Edu.Api.Controllers
         /// </summary>
         /// <param name="id">项目 或班级信息</param>
         /// <returns></returns>
-        [HttpPost, Route("{delete:int}")]
+        [HttpPost, Route("delete/{id:int}")]
         public IActionResult Delete(int id)
         {
             var cla = _ctx.Clas.FirstOrDefault(a=>a.Id==id);
@@ -115,5 +135,25 @@ namespace Mt.Edu.Api.Controllers
             _ctx.SaveChanges();
             return Ok();
         }
+
+        /// <summary>
+        /// 批量删除
+        /// </summary>
+        /// <param name="ids">批量id列表</param>
+        /// <returns></returns>
+        [HttpPost, Route("delete")]
+        public IActionResult Delete(IEnumerable<int> ids)
+        {
+            var clas = _ctx.Clas.Where(a => ids.Any(s => s == a.Id)).ToList();
+            clas.ForEach(a =>
+            {
+                a.Status = false;
+            });
+
+            //_ctx.Update(clas);
+            _ctx.SaveChanges();
+            return Ok();
+        }
+
     }
 }

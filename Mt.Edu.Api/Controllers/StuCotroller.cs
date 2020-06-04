@@ -1,6 +1,7 @@
 ﻿using Csp.EF.Extensions;
 using Csp.EF.Paging;
 using Csp.Web;
+using Csp.Web.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -67,7 +68,7 @@ namespace Mt.Edu.Api.Controllers
         public async Task<IActionResult> Create(BasicInfo basic)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState.First());
+                return BadRequest(ModelState.ToOptResult());
             if (basic.Id > 0)
             {
                 var old = _ctx.BasicInfos.FirstOrDefault(a => a.Id == basic.Id);

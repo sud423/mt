@@ -7,6 +7,7 @@ using Mt.Ask.Api.Infrastructure;
 using Mt.Ask.Api.Models;
 using System.Linq;
 using System.Threading.Tasks;
+using Csp.Web.Extensions;
 
 namespace Mt.Ask.Api.Controllers
 {
@@ -64,7 +65,7 @@ namespace Mt.Ask.Api.Controllers
         public async Task<IActionResult> Create([FromBody]Course course)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState.First());
+                return BadRequest(ModelState.ToOptResult());
 
             if (course.Id > 0)
             {
@@ -85,7 +86,7 @@ namespace Mt.Ask.Api.Controllers
         /// </summary>
         /// <param name="id">根据主键删除</param>
         /// <returns></returns>
-        [HttpDelete, Route("delete/{id:int}")]
+        [HttpPost, Route("delete/{id:int}")]
         public async Task<IActionResult> Deprecated(int id)
         {
             var course = await _askDbContext.Courses.SingleOrDefaultAsync(a => a.Id == id);

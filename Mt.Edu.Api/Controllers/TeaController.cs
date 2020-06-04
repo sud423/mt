@@ -1,6 +1,7 @@
 ﻿using Csp.EF.Extensions;
 using Csp.EF.Paging;
 using Csp.Web;
+using Csp.Web.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -62,7 +63,7 @@ namespace Mt.Edu.Api.Controllers
         public IActionResult Create(Tea tea)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState.First());
+                return BadRequest(ModelState.ToOptResult());
             if (tea.Id > 0)
             {
                 var old = _ctx.Teas.FirstOrDefault(a => a.Id == tea.Id);

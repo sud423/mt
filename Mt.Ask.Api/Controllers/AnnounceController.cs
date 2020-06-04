@@ -1,5 +1,6 @@
 ﻿using Csp.EF.Paging;
 using Csp.Web;
+using Csp.Web.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -64,7 +65,7 @@ namespace Mt.Ask.Api.Controllers
         public async Task<IActionResult> Create([FromBody]Announce announce)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState.First());
+                return BadRequest(ModelState.ToOptResult());
 
             if (announce.Id > 0)
             {
