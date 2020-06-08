@@ -12,7 +12,7 @@ namespace Mt.Edu.Api.Models
         /// <summary>
         /// 显示的文本
         /// </summary>
-        public string Lable { get; set; }
+        public string Label { get; set; }
 
         /// <summary>
         /// 父节点编号
@@ -27,7 +27,7 @@ namespace Mt.Edu.Api.Models
         public Tree(int id,string lable, int parentId)
         {
             Id = id;
-            Lable = lable;
+            Label = lable;
             ParentId = parentId;
             Children = new List<Tree>();
 

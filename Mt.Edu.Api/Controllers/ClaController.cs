@@ -30,16 +30,16 @@ namespace Mt.Edu.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet, Route("gettree")]
-        public async Task<IActionResult> GetClaTree(string channel)
+        public async Task<IActionResult> GetClaTree(string channel, bool isRoot)
         {
-            var clas = await _ctx.Clas.Where(a=>a.Status && a.Channel==channel).ToListAsync();
+            var clas = await _ctx.Clas.Where(a => a.Status && a.Channel == channel).ToListAsync();
             var roots = clas.Where(a => a.ParentId == 0).ToTrees().ToList();
-
-            for(int i = 0; i < roots.Count; i++)
-            {
-                var result = clas.Where(a => a.ParentId == roots[i].Id).ToTrees().ToList();
-                roots[i].Children = result;
-            }
+            if (!isRoot)
+                for (int i = 0; i < roots.Count; i++)
+                {
+                    var result = clas.Where(a => a.ParentId == roots[i].Id).ToTrees().ToList();
+                    roots[i].Children = result;
+                }
 
             return Ok(roots);
         }
@@ -51,8 +51,8 @@ namespace Mt.Edu.Api.Controllers
         /// <param name="isCla">是否查班级</param>
         /// <param name="name">名称</param>
         /// <returns></returns>
-        [HttpGet, Route("getall")]
-        public async Task<IActionResult> GetAll(string channel, bool isCla, int page, int size, string name = "")
+        [HttpGet, Route("getpaging")]
+        public async Task<IActionResult> GetPaging(string channel, bool isCla, int page, int size, string name = "")
         {
             var predicate = PredicateExtension.True<Cla>();
             predicate = predicate.And(a => a.Channel == channel);
@@ -98,6 +98,11 @@ namespace Mt.Edu.Api.Controllers
             });
         }
 
+        /// <summary>
+        /// 创建或编辑项目/班级信息
+        /// </summary>
+        /// <param name="cla"></param>
+        /// <returns></returns>
         [HttpPost, Route("create")]
         public IActionResult Create([FromBody]Cla cla)
         {
