@@ -14,30 +14,44 @@ namespace Mt.Edu.Api.Controllers
 {
     [Authorize]
     [Route("api/v1/[controller]")]
-    public class StuCotroller : ControllerBase
+    public class StuController : ControllerBase
     {
         private readonly EduDbContext _ctx;
 
-        public StuCotroller(EduDbContext ctx)
+        public StuController(EduDbContext ctx)
         {
             _ctx = ctx;
         }
 
-        public IActionResult GetInfos(string key,string channel,int page,int size)
+        [HttpGet, Route("getstus/{claId:int}")]
+        public IActionResult GetInfos(int claId,string key,string channel,int page,int size)
         {
-            var predicate = PredicateExtension.True<BasicInfo>();
+            var predicate = PredicateExtension.True<Stu>();
             if (!string.IsNullOrEmpty(key))
             {
-                predicate = predicate.And(a => a.Name.Contains(key) || a.Phone.Contains(key));
+                predicate = predicate.And(a => a.BasicInfo.Name.Contains(key) || a.BasicInfo.Phone.Contains(key));
             }
 
-            predicate = predicate.And(a => a.Channel == channel);
+            predicate = predicate.And(a => a.BasicInfo.Channel == channel);
+            predicate = predicate.And(a => a.ClaId == claId);
+            predicate = predicate.And(a => a.Status);
 
-            var results= _ctx.BasicInfos.Where(predicate).ToPaged(page, size);
+            var results= _ctx.Stus.Include(a=>a.BasicInfo).Where(predicate).Select(a => new {
+                a.BasicInfo.Name,
+                a.BasicInfo.Id,
+                a.BasicInfo.Sex,
+                a.BasicInfo.Address,
+                a.BasicInfo.Phone,
+                a.BasicInfo.EMail,
+                a.BasicInfo.Company,
+                a.BasicInfo.Fti,
+                a.BasicInfo.Remark
+            }).ToPaged(page, size);
 
             return Ok(results);
         }
 
+        [HttpGet, Route("getstuinfo")]
         public IActionResult GetInfos(string key, string channel)
         {
             var predicate = PredicateExtension.True<BasicInfo>();

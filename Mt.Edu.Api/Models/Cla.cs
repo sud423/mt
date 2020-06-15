@@ -1,4 +1,5 @@
 ﻿using Csp.EF;
+using System.Text.Json.Serialization;
 using System.ComponentModel.DataAnnotations;
 
 namespace Mt.Edu.Api.Models
@@ -59,6 +60,7 @@ namespace Mt.Edu.Api.Models
         /// </summary>
         public int UserId { get; set; }
 
+        [JsonIgnore]
         public virtual Stu Stu { get; set; }
     }
 }
