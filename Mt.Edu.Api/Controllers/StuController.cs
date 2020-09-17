@@ -136,6 +136,7 @@ namespace Mt.Edu.Api.Controllers
             return Ok(results);
         }
 
+        [HttpPost,Route("dropout/{stuId:int}")]
         public IActionResult Quit(int stuId)
         {
             var stu = _ctx.Stus.FirstOrDefault(a=>a.Id==stuId);
