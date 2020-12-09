@@ -2,9 +2,6 @@
 {
     public class BrowseHistory
     {
-        public int TenantId { get; set; }
-
-        public int WebSiteId { get; set; }
 
         public int UserId { get; set; }
 
@@ -22,8 +19,6 @@
 
         public BrowseHistory(int sourceId, string ip, string browser, string os, string device,string source, int userId = 0)
         {
-            WebSiteId = 1;
-            TenantId = 2;
             UserId = userId;
             Ip = ip;
             Browser = browser;
